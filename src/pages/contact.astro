@@ -1,0 +1,121 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Contact">
+  <div class="section page-top">
+    <h1>Plan een scan</h1>
+    <p>Bel direct voor een snelle afspraak, of stuur een bericht en ik neem contact op.</p>
+  </div>
+
+  <div class="section contact-grid">
+    <div class="contact-info">
+      <div class="info-card">
+        <h3>Telefonisch</h3>
+        <a href="tel:+31612415418">06 12 41 54 18</a>
+        <p>Ma–Vr: 8:00 – 18:00</p>
+      </div>
+      <div class="info-card">
+        <h3>E-mail</h3>
+        <a href="mailto:info@frankdebruijn.com">info@frankdebruijn.com</a>
+      </div>
+      <div class="info-card">
+        <h3>Locatie</h3>
+        <p>Krakenburg 23<br />5341 BM Oss</p>
+        <p style="margin-top:0.5rem; font-size:0.85rem;">Werkgebied: Noord-Brabant en omgeving</p>
+      </div>
+    </div>
+
+    <form class="contact-form" action="mailto:info@frankdebruijn.com" method="get">
+      <h2>Stuur een bericht</h2>
+      <label>
+        Naam
+        <input type="text" name="name" placeholder="Jouw naam" required />
+      </label>
+      <label>
+        Telefoon of e-mail
+        <input type="text" name="contact" placeholder="06... of naam@email.nl" required />
+      </label>
+      <label>
+        Type woning/pand
+        <select name="type">
+          <option value="">Selecteer...</option>
+          <option>Vrijstaande woning</option>
+          <option>Rijtjeswoning / tussenwoning</option>
+          <option>Appartement</option>
+          <option>Bedrijfspand</option>
+          <option>Anders</option>
+        </select>
+      </label>
+      <label>
+        Bericht
+        <textarea name="body" rows="4" placeholder="Wat wil je laten scannen?" required></textarea>
+      </label>
+      <button type="submit" class="btn">Verstuur aanvraag</button>
+    </form>
+  </div>
+</Layout>
+
+<style>
+  .page-top h1 { font-size: 2.5rem; font-weight: 800; color: var(--dark); margin-bottom: 1rem; }
+  .page-top p { color: var(--muted); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: start;
+    padding-top: 0;
+  }
+
+  .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .info-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid #e9ecef;
+  }
+
+  .info-card h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.5rem; }
+  .info-card a { font-size: 1.1rem; font-weight: 700; color: var(--accent); }
+  .info-card a:hover { text-decoration: underline; }
+  .info-card p { color: var(--muted); font-size: 0.9rem; margin-top: 0.25rem; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+  .contact-form h2 { font-size: 1.3rem; font-weight: 800; color: var(--dark); }
+
+  .contact-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    background: var(--white);
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    color: var(--text);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s;
+  }
+
+  .contact-form input:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  @media (max-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+</style>

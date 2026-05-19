@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Diensten">
+  <div class="section page-top">
+    <h1>Diensten</h1>
+    <p>Alle thermografische scans worden uitgevoerd door een gecertificeerde thermograaf met professionele apparatuur.</p>
+  </div>
+
+  <div class="section services">
+    <div id="quickscan" class="service-block">
+      <h2>Quickscan Woning</h2>
+      <p>Een complete thermografische scan van jouw woning, zowel van binnen als buiten. Je ontvangt een helder rapport met de probleemgebieden op foto, inclusief warmtebeelden en toelichting. Ideaal om te bepalen waar isolatie het meeste oplevert voor energiebesparing.</p>
+      <ul>
+        <li>Scan van voor- en achtergevel (buiten)</li>
+        <li>Scan van wanden, vloeren en plafonds (binnen)</li>
+        <li>Rapport met warmtebeelden en advies</li>
+        <li>Geschikt voor subsidieaanvragen</li>
+      </ul>
+    </div>
+
+    <div id="drone" class="service-block">
+      <h2>Drone Thermografie</h2>
+      <p>Voor daken en grote oppervlakken waarbij directe toegang moeilijk of gevaarlijk is, zet ik de DJI Mavic 2 Enterprise Advanced in — een drone met ingebouwde radiometrische FLIR-thermocamera.</p>
+      <ul>
+        <li>Platte en schuine daken</li>
+        <li>Industriële gebouwen en hallen</li>
+        <li>Zonnepanelenparken</li>
+        <li>Geen hoogwerker of dakdekker nodig</li>
+      </ul>
+    </div>
+
+    <div id="zonnepanelen" class="service-block">
+      <h2>Zonnepanelen Inspectie</h2>
+      <p>Een defect zonnepaneel produceer je net zo goed als geen, maar detecteer je moeilijk met het blote oog. Met een thermografische inspectie worden hotspots en slechte cellen direct zichtbaar, zodat je gericht kunt laten repareren.</p>
+      <ul>
+        <li>Opsporen van hotspots en defecte cellen</li>
+        <li>Rapport per paneel</li>
+        <li>Geschikt voor garantieclaims bij installateur</li>
+      </ul>
+    </div>
+
+    <div id="lek" class="service-block">
+      <h2>Lekdetectie</h2>
+      <p>Water en warmte volgen dezelfde wegen. Met een thermocamera vinden we waterlekkages, vochtplekken en verborgen brandhaarden zonder destructief onderzoek.</p>
+      <ul>
+        <li>Waterlekkages in muren en plafonds</li>
+        <li>Warmteverspreiding in elektrische installaties</li>
+        <li>Vochtschade opsporen</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <a href="/contact" class="btn">Vraag een scan aan</a>
+  </div>
+</Layout>
+
+<style>
+  .page-top h1 { font-size: 2.5rem; font-weight: 800; color: var(--dark); margin-bottom: 1rem; }
+  .page-top p { color: var(--muted); max-width: 600px; }
+
+  .services { display: flex; flex-direction: column; gap: 0; padding-top: 0; }
+
+  .service-block {
+    padding: 3rem 0;
+    border-bottom: 1px solid #e9ecef;
+    max-width: 700px;
+  }
+
+  .service-block h2 { font-size: 1.5rem; font-weight: 800; color: var(--dark); margin-bottom: 1rem; }
+  .service-block p { color: var(--muted); margin-bottom: 1.5rem; }
+
+  .service-block ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .service-block li {
+    font-size: 0.95rem;
+    color: var(--text);
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .service-block li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+</style>

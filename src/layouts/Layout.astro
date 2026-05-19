@@ -1,0 +1,160 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = "Warmtescan.nu – Maak je warmteverlies inzichtelijk" } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={description} />
+  <link rel="icon" href="/favicon.ico" />
+  <title>{title} — Warmtescan.nu</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="/" class="logo">Warmtescan<span>.nu</span></a>
+      <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+      <ul>
+        <li><a href="/" class={currentPath === "/" ? "active" : ""}>Home</a></li>
+        <li><a href="/diensten" class={currentPath === "/diensten" ? "active" : ""}>Diensten</a></li>
+        <li><a href="/contact" class={currentPath === "/contact" ? "active" : ""}>Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p>&copy; {new Date().getFullYear()} Warmtescan.nu — Frank de Bruijn</p>
+      <p>Krakenburg 23, 5341BM Oss &nbsp;|&nbsp; <a href="tel:+31612415418">06 12 41 54 18</a></p>
+    </div>
+  </footer>
+</body>
+</html>
+
+<style is:global>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f8f9fa;
+    --white: #fff;
+    --dark: #1a1a2e;
+    --accent: #e85d04;
+    --accent2: #f48c06;
+    --text: #333;
+    --muted: #777;
+    --max: 1100px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+    box-shadow: 0 1px 8px rgba(0,0,0,0.08);
+  }
+
+  nav {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .logo {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--dark);
+  }
+
+  .logo span { color: var(--accent); }
+
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+
+  nav ul a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+
+  nav ul a:hover, nav ul a.active { color: var(--accent); }
+
+  .menu-toggle { display: none; background: none; border: none; color: var(--dark); font-size: 1.5rem; cursor: pointer; }
+
+  main { min-height: 80vh; }
+
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.5);
+    padding: 2rem 1.5rem;
+  }
+
+  .footer-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+  }
+
+  .footer-inner a { color: rgba(255,255,255,0.7); }
+  .footer-inner a:hover { color: var(--accent); }
+
+  .btn {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    background: var(--accent);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    transition: background 0.2s;
+  }
+
+  .btn:hover { background: var(--accent2); }
+
+  .section {
+    padding: 4rem 1.5rem;
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+
+  .section h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .menu-toggle { display: block; }
+    nav ul { display: none; }
+    .footer-inner { flex-direction: column; gap: 0.75rem; text-align: center; }
+  }
+</style>
