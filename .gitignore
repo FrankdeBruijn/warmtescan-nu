@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# stockbeelden met onduidelijke licentie — blijven lokaal, niet in git
+content/images/STOCK-*
