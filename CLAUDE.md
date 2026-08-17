@@ -19,14 +19,14 @@ npm run build    # build naar dist/
 - Live domein (nog te koppelen): https://warmtescan.nu
 
 ## Huidige situatie
-warmtescan.nu staat nog op Wix. Het **domein staat ook bij Wix** (whois-registrar
-Key-Systems GmbH), niet bij TransIP zoals hier eerder stond — er is dus een
-verhuizing met authcode nodig, vóór de verlengdatum van 10 okt 2026.
-Mail loopt op Google Workspace en blijft daar. Draaiboek:
-`PROJECTEN/wix-eruit/03-warmtescan-draaiboek.md`.
+De site draait nog op Wix; alleen de **DNS-zone** zit daar. Het domein staat gewoon
+bij TransIP (de whois toont `Key-Systems GmbH`, maar dat is TransIP's eigen
+registrar-backend — `orangestock.com` toont hetzelfde). Er is dus geen
+domeinverhuizing nodig, alleen een nameserverwissel.
 
-Pas koppelen aan Cloudflare Pages als de site klaar en goedgekeurd is — en dat is
-hij nog niet, zie hieronder.
+**Hosting herzien 2026-08-17: niet Cloudflare Pages, maar de orangestock-server**
+(TransIP), naast frankdebruijn.com en rooyeplas. Mail gaat van Google Workspace
+naar TransIP. Draaiboek: `PROJECTEN/wix-eruit/03-warmtescan-draaiboek.md`.
 
 ## Pagina's
 - `/` — Home
