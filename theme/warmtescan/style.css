@@ -31,11 +31,45 @@ p {
 
 /* Knoppen: één vorm voor de hele site, met een fysieke indruk bij het klikken. */
 .wp-block-button__link {
-	transition: background-color 0.2s ease, transform 0.1s ease;
+	transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
 }
 
 .wp-block-button__link:active {
 	transform: translateY(1px);
+}
+
+/* Omlijnde pill-knop, zoals op de huidige site: witte vulling, olijfgroene rand,
+   zwarte tekst, sterk afgeronde hoeken. */
+.wp-block-button.is-style-omlijnd > .wp-block-button__link {
+	background-color: var(--wp--preset--color--papier);
+	color: var(--wp--preset--color--inkt);
+	border: 2px solid var(--wp--preset--color--accent-diep);
+	border-radius: 50px;
+}
+
+.wp-block-button.is-style-omlijnd > .wp-block-button__link:hover {
+	background-color: var(--wp--preset--color--accent);
+	color: var(--wp--preset--color--inkt);
+}
+
+/* Gevulde olijfgroene pill, voor de knop die eruit moet springen. */
+.wp-block-button.is-style-olijf > .wp-block-button__link {
+	background-color: var(--wp--preset--color--accent-diep);
+	color: var(--wp--preset--color--papier);
+	border-radius: 50px;
+}
+
+.wp-block-button.is-style-olijf > .wp-block-button__link:hover {
+	background-color: var(--wp--preset--color--inkt);
+}
+
+/* Kleine bovenkop boven een sectietitel. */
+.warmtescan-bovenkop {
+	font-size: var(--wp--preset--font-size--klein);
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	margin-bottom: 0.5rem;
 }
 
 /* Zichtbare focus voor toetsenbordgebruik. De browserstandaard verdwijnt

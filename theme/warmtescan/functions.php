@@ -21,12 +21,31 @@ add_action( 'after_setup_theme', function () {
 	add_editor_style( 'style.css' );
 } );
 
+/**
+ * Twee extra knopvormen, zoals ze op de oude site stonden: een omlijnde pill en
+ * een gevulde olijfgroene. Zo zijn ze ook in de editor te kiezen.
+ */
+add_action( 'init', function () {
+	register_block_style( 'core/button', array(
+		'name'  => 'omlijnd',
+		'label' => 'Omlijnd (pill)',
+	) );
+	register_block_style( 'core/button', array(
+		'name'  => 'olijf',
+		'label' => 'Olijfgroen (pill)',
+	) );
+} );
+
 add_action( 'wp_enqueue_scripts', function () {
+	// Versie op basis van de bestandsdatum: dan haalt een browser de stijl na
+	// elke wijziging opnieuw op, in plaats van een oude versie uit de cache.
+	$pad = get_stylesheet_directory() . '/style.css';
+
 	wp_enqueue_style(
 		'warmtescan',
 		get_stylesheet_uri(),
 		array(),
-		wp_get_theme()->get( 'Version' )
+		file_exists( $pad ) ? (string) filemtime( $pad ) : wp_get_theme()->get( 'Version' )
 	);
 } );
 
