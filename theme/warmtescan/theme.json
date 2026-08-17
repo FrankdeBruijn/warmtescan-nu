@@ -42,26 +42,26 @@
 				{
 					"slug": "normaal",
 					"name": "Normaal",
-					"size": "1.0625rem",
-					"fluid": { "min": "1rem", "max": "1.125rem" }
+					"size": "1rem",
+					"fluid": false
 				},
 				{
 					"slug": "groot",
 					"name": "Groot",
-					"size": "1.375rem",
-					"fluid": { "min": "1.1875rem", "max": "1.5rem" }
+					"size": "1.125rem",
+					"fluid": { "min": "1.0625rem", "max": "1.1875rem" }
 				},
 				{
 					"slug": "kop",
 					"name": "Kop",
-					"size": "2rem",
-					"fluid": { "min": "1.625rem", "max": "2.25rem" }
+					"size": "1.5rem",
+					"fluid": { "min": "1.3125rem", "max": "1.625rem" }
 				},
 				{
 					"slug": "titel",
 					"name": "Titel",
-					"size": "3rem",
-					"fluid": { "min": "2.125rem", "max": "3.5rem" }
+					"size": "2.125rem",
+					"fluid": { "min": "1.75rem", "max": "2.375rem" }
 				}
 			]
 		},
@@ -71,9 +71,9 @@
 			"spacingSizes": [
 				{ "slug": "20", "name": "Klein", "size": "1rem" },
 				{ "slug": "30", "name": "Normaal", "size": "1.75rem" },
-				{ "slug": "40", "name": "Ruim", "size": "3rem" },
-				{ "slug": "50", "name": "Sectie", "size": "clamp(3.5rem, 8vw, 6rem)" },
-				{ "slug": "60", "name": "Sectie groot", "size": "clamp(5rem, 11vw, 8rem)" }
+				{ "slug": "40", "name": "Ruim", "size": "2.25rem" },
+				{ "slug": "50", "name": "Sectie", "size": "clamp(2.5rem, 5vw, 3.75rem)" },
+				{ "slug": "60", "name": "Sectie groot", "size": "clamp(3.25rem, 7vw, 5rem)" }
 			]
 		},
 		"useRootPaddingAwareAlignments": true
