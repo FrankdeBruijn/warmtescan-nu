@@ -1,0 +1,198 @@
+/*
+Theme Name: Warmtescan
+Theme URI: https://warmtescan.nu
+Author: Frank de Bruijn
+Description: Blokthema voor warmtescan.nu. Licht en zakelijk, met het warmtebeeldpalet als enige kleuraccent. Geen externe bronnen: systeemlettertypen, geen tracking, geen cookies.
+Version: 1.0
+Requires at least: 6.5
+Tested up to: 7.0
+Requires PHP: 8.0
+License: GPL-2.0-or-later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: warmtescan
+*/
+
+/* Basis die theme.json niet dekt. Alles wat wél via theme.json kan, staat daar. */
+
+body {
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+/* Koppen strakker zetten dan de browserstandaard. */
+h1, h2, h3 {
+	letter-spacing: -0.02em;
+	text-wrap: balance;
+}
+
+p {
+	text-wrap: pretty;
+}
+
+/* Knoppen: één vorm voor de hele site, met een fysieke indruk bij het klikken. */
+.wp-block-button__link {
+	transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.wp-block-button__link:active {
+	transform: translateY(1px);
+}
+
+/* Zichtbare focus voor toetsenbordgebruik. De browserstandaard verdwijnt
+   op gekleurde vlakken, dus die zetten we zelf. */
+:where(a, button, input, textarea, summary):focus-visible {
+	outline: 3px solid var(--wp--preset--color--accent);
+	outline-offset: 2px;
+	border-radius: 2px;
+}
+
+/* Het prijsblok op de homepage: vier kaarten die even hoog worden, zodat de
+   prijzen op één lijn staan ook als de omschrijving verschilt in lengte. */
+.warmtescan-diensten .wp-block-column {
+	display: flex;
+	flex-direction: column;
+}
+
+.warmtescan-diensten .wp-block-column > :last-child {
+	margin-top: auto;
+}
+
+/* De voorwaarden staan als lijst met een streep ervoor in plaats van een bolletje. */
+.warmtescan-voorwaarden ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+.warmtescan-voorwaarden li {
+	position: relative;
+	padding-left: 1.5rem;
+	margin-bottom: 0.75rem;
+}
+
+.warmtescan-voorwaarden li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0.7em;
+	width: 0.75rem;
+	height: 2px;
+	background: var(--wp--preset--color--accent);
+}
+
+/* Afbeeldingen nooit breder dan hun kolom, en met een rustige hoek. */
+.wp-block-image img {
+	border-radius: 4px;
+}
+
+/* Bijschrift onder een foto: kleiner en rustiger dan de lopende tekst. */
+.wp-block-image figcaption {
+	font-size: var(--wp--preset--font-size--klein);
+	color: var(--wp--preset--color--inkt-zacht);
+	margin-top: 0.75rem;
+}
+
+/* ---- Aanvraagformulier ---- */
+
+.warmtescan-formulier {
+	max-width: 40rem;
+}
+
+.warmtescan-formulier label {
+	display: block;
+	font-weight: 600;
+	margin-bottom: 0.35rem;
+}
+
+.warmtescan-formulier input[type="text"],
+.warmtescan-formulier input[type="tel"],
+.warmtescan-formulier input[type="email"],
+.warmtescan-formulier textarea {
+	width: 100%;
+	padding: 0.7rem 0.8rem;
+	font: inherit;
+	color: var(--wp--preset--color--inkt);
+	background: var(--wp--preset--color--papier);
+	border: 1px solid #9ba1ac;      /* donker genoeg voor WCAG AA op wit */
+	border-radius: 4px;
+}
+
+.warmtescan-formulier input:focus-visible,
+.warmtescan-formulier textarea:focus-visible {
+	border-color: var(--wp--preset--color--accent);
+}
+
+/* Twee velden naast elkaar op desktop, onder elkaar op mobiel. */
+.warmtescan-rij {
+	display: grid;
+	gap: 0 1.25rem;
+	grid-template-columns: 1fr;
+}
+
+@media (min-width: 40rem) {
+	.warmtescan-rij {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.warmtescan-hulp {
+	display: block;
+	margin-top: 0.4rem;
+	font-size: var(--wp--preset--font-size--klein);
+	color: var(--wp--preset--color--inkt-zacht);
+}
+
+.warmtescan-formulier fieldset {
+	border: 1px solid var(--wp--preset--color--lijn);
+	border-radius: 4px;
+	padding: 1rem 1.25rem 1.25rem;
+	margin: 1.5rem 0;
+}
+
+.warmtescan-formulier legend {
+	font-weight: 600;
+	padding: 0 0.4rem;
+}
+
+.warmtescan-keuze {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	font-weight: 400;
+	margin-bottom: 0.5rem;
+}
+
+.warmtescan-privacy {
+	font-size: var(--wp--preset--font-size--klein);
+	color: var(--wp--preset--color--inkt-zacht);
+}
+
+/* Het vangveld voor bots: onzichtbaar voor bezoekers, wel leesbaar voor bots.
+   Bewust geen display:none, want sommige bots slaan dat over. */
+.warmtescan-vangveld {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+.warmtescan-melding {
+	padding: 1rem 1.25rem;
+	border-radius: 4px;
+	border-left: 4px solid;
+	margin-bottom: 1.5rem;
+}
+
+.warmtescan-melding--goed {
+	background: #f0f7f2;
+	border-left-color: #2c7a4b;
+}
+
+.warmtescan-melding--fout {
+	background: #fdf2ee;
+	border-left-color: var(--wp--preset--color--accent);
+}
+
+.warmtescan-melding p {
+	margin: 0;
+}
