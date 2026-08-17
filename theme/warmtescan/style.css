@@ -125,6 +125,44 @@ p {
 	margin-top: 0.75rem;
 }
 
+/* Genummerde blokken, zoals op de zakelijk-pagina. Het nummer staat in de
+   linkermarge, met een schuine streep ertussen zoals op de oude site. */
+.warmtescan-stap {
+	margin-bottom: var(--wp--preset--spacing--40);
+}
+
+.warmtescan-stap:last-child {
+	margin-bottom: 0;
+}
+
+.warmtescan-stap h2 {
+	position: relative;
+	font-weight: 400;
+}
+
+.warmtescan-nummer {
+	position: absolute;
+	left: -3.25rem;
+	font-weight: 400;
+}
+
+.warmtescan-nummer::after {
+	content: "\\";
+	margin-left: 0.5rem;
+	color: var(--wp--preset--color--inkt-zacht);
+}
+
+.warmtescan-stap p {
+	margin-top: 0.75rem;
+}
+
+@media (max-width: 48rem) {
+	.warmtescan-nummer {
+		position: static;
+		margin-right: 0.5rem;
+	}
+}
+
 /* De apparatuurblokken: beelden verschillen sterk in hoogte, dus geven we ze
    allemaal dezelfde hoogte. Zo beginnen de bijschriften op één lijn. */
 .warmtescan-techniek .wp-block-column {
