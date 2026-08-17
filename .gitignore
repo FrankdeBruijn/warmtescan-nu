@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # stockbeelden met onduidelijke licentie — blijven lokaal, niet in git
 content/images/STOCK-*
+
+# klantmateriaal en grote documenten blijven buiten git
+content/documenten/
