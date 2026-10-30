@@ -1,0 +1,323 @@
+/* Warmtescan.nu — onepager. Vormgeving overgenomen van het WordPress-thema
+   (theme/warmtescan), dat zelf een nabouw van de Wix-site was. */
+
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 300; font-display: swap; src: url('../fonts/montserrat-300.woff2') format('woff2'); }
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 400; font-display: swap; src: url('../fonts/montserrat-400.woff2') format('woff2'); }
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 600; font-display: swap; src: url('../fonts/montserrat-600.woff2') format('woff2'); }
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 700; font-display: swap; src: url('../fonts/montserrat-700.woff2') format('woff2'); }
+
+:root {
+	--papier: #ffffff;
+	--papier-dof: #f4f4f4;
+	--inkt: #000000;
+	--inkt-zacht: #5b616e;
+	--accent: #ceeb4c;
+	--accent-diep: #758c10;
+	--lijn: #e2e4e8;
+
+	--klein: 0.875rem;
+	--groot: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+	--kop: clamp(1.5rem, 1.3rem + 1vw, 1.875rem);
+	--titel: clamp(2rem, 1.5rem + 2.4vw, 2.8125rem);
+
+	--rand: clamp(1rem, 4vw, 1.75rem);
+	--sectie: clamp(2.5rem, 5vw, 3.75rem);
+	--sectie-groot: clamp(3.25rem, 7vw, 5rem);
+	--breed: 72rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+
+body {
+	margin: 0;
+	background: var(--papier);
+	color: var(--inkt);
+	font: 300 1rem/1.75 Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+h1, h2, h3 {
+	font-weight: 700;
+	line-height: 1.2;
+	letter-spacing: -0.02em;
+	text-wrap: balance;
+	margin: 0 0 1rem;
+}
+h1 { font-size: var(--titel); }
+h2 { font-size: var(--kop); }
+h3 { font-size: var(--groot); }
+
+p { margin: 0 0 1rem; text-wrap: pretty; }
+p:last-child { margin-bottom: 0; }
+
+a { color: var(--inkt); }
+a:hover { color: var(--accent-diep); }
+
+strong { font-weight: 700; }
+
+:where(a, button, summary):focus-visible {
+	outline: 3px solid var(--accent);
+	outline-offset: 2px;
+	border-radius: 2px;
+}
+
+.breed {
+	max-width: var(--breed);
+	margin-inline: auto;
+	padding-inline: var(--rand);
+}
+
+.sectie { padding-block: var(--sectie); }
+/* Een sectie die inhoudelijk doorloopt op de vorige, zonder eigen witruimte erboven. */
+.sectie.vervolg { padding-top: 0; }
+.band { background: var(--papier-dof); }
+.band-limoen { background: var(--accent); }
+
+/* ---- Kop ---- */
+
+.kop {
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	background: var(--papier);
+	border-bottom: 1px solid var(--lijn);
+}
+
+.kop .breed {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding-block: 0.75rem;
+}
+
+.merk {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	font-weight: 700;
+	text-decoration: none;
+}
+.merk img { width: 2.5rem; height: 2.5rem; }
+
+.menu {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+}
+.menu a:not(.knop) {
+	font-weight: 500;
+	text-decoration: none;
+}
+
+/* Op een smal scherm alleen het merk en de knop; de secties volgen elkaar
+   toch gewoon op bij het scrollen. */
+@media (max-width: 52rem) {
+	.menu a:not(.knop) { display: none; }
+}
+
+.knop-klein { white-space: nowrap; }
+.smal-alleen { display: none; }
+@media (max-width: 30rem) {
+	.breed-alleen { display: none; }
+	.smal-alleen { display: inline; }
+}
+
+/* ---- Knoppen ---- */
+
+.knop {
+	display: inline-block;
+	padding: 0.9rem 1.75rem;
+	background: var(--inkt);
+	color: var(--papier);
+	font-weight: 700;
+	line-height: 1.3;
+	text-decoration: none;
+	border-radius: 10px;
+	transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+.knop:hover { background: var(--accent-diep); color: var(--papier); }
+.knop:active { transform: translateY(1px); }
+.knop-klein { padding: 0.6rem 1.1rem; font-size: 0.95rem; }
+
+.knop-omlijnd {
+	background: var(--papier);
+	color: var(--inkt);
+	border: 2px solid var(--accent-diep);
+	border-radius: 50px;
+}
+.knop-omlijnd:hover { background: var(--accent); color: var(--inkt); }
+
+.knop-olijf { background: var(--accent-diep); border-radius: 50px; }
+.knop-olijf:hover { background: var(--inkt); }
+
+.knoppen {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	margin-top: 2.25rem;
+}
+
+/* ---- Kolommen ---- */
+
+.kolommen {
+	display: grid;
+	gap: 2.25rem clamp(2.25rem, 5vw, 3.75rem);
+	align-items: center;
+}
+.kolommen.boven { align-items: start; }
+
+@media (min-width: 48rem) {
+	.kolommen { grid-template-columns: 1fr 1fr; }
+	.kolommen.links-breed { grid-template-columns: 52fr 48fr; }
+	.kolommen.rechts-breed { grid-template-columns: 42fr 58fr; }
+}
+
+figure { margin: 0; }
+figure img { border-radius: 4px; width: 100%; }
+figcaption {
+	font-size: var(--klein);
+	color: var(--inkt-zacht);
+	margin-top: 0.75rem;
+}
+
+.bovenkop {
+	font-size: var(--klein);
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	margin-bottom: 0.5rem;
+}
+
+.inleiding { font-size: var(--groot); }
+
+/* ---- Hero ---- */
+
+.hero-tekst { text-align: center; }
+.hero-tekst p { font-size: var(--groot); }
+.hero-tekst .knoppen { justify-content: center; margin-top: 1.5rem; }
+
+/* ---- Diensten ---- */
+
+.dienst { margin-top: 1.75rem; }
+.dienst h3 { font-size: 1rem; margin-bottom: 0.25rem; }
+
+/* ---- Voorwaarden ---- */
+
+.voorwaarden { max-width: 40rem; margin-inline: auto; }
+
+.streeplijst { list-style: none; padding: 0; margin: 0; }
+.streeplijst li {
+	position: relative;
+	padding-left: 1.5rem;
+	margin-bottom: 0.75rem;
+}
+.streeplijst li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0.8em;
+	width: 0.75rem;
+	height: 2px;
+	background: var(--inkt);
+}
+
+.plaats { text-align: center; margin-top: 2.25rem; }
+
+/* ---- Zakelijk: genummerde blokken ---- */
+
+.stappen {
+	display: grid;
+	gap: 2.25rem;
+	margin-top: 2.25rem;
+}
+@media (min-width: 48rem) {
+	.stappen { grid-template-columns: 1fr 1fr; }
+}
+
+.stap h3 { font-size: var(--groot); font-weight: 600; }
+.nummer { font-weight: 400; }
+.nummer::after {
+	content: "\\";
+	margin: 0 0.5rem;
+	color: var(--inkt-zacht);
+}
+
+/* ---- Techniek ---- */
+
+.apparatuur {
+	display: grid;
+	grid-template-columns: 6.5rem 1fr;
+	align-items: center;
+	gap: 1.25rem;
+	margin-bottom: 1.25rem;
+}
+.apparatuur img {
+	max-height: 4.5rem;
+	width: auto;
+	margin-inline: auto;
+	object-fit: contain;
+}
+.partnerlogo img { width: 210px; }
+
+/* ---- Contact ---- */
+
+.contact { text-align: center; }
+.contact .inleiding { max-width: 40rem; margin-inline: auto; }
+.contact .knoppen { justify-content: center; }
+.contact-gegevens {
+	margin-top: 2rem;
+	font-size: var(--groot);
+}
+.contact-gegevens a { font-weight: 600; }
+
+.tip {
+	max-width: 40rem;
+	margin: 2rem auto 0;
+	padding: 1rem 1.25rem;
+	background: var(--papier);
+	border-left: 4px solid var(--accent-diep);
+	border-radius: 4px;
+	text-align: left;
+	font-size: var(--klein);
+}
+
+/* ---- Voet ---- */
+
+.voet {
+	border-top: 1px solid var(--lijn);
+	padding-block: var(--sectie) 2.25rem;
+	text-align: center;
+}
+.voet h2 { margin-bottom: 0.5rem; }
+
+.sociaal {
+	display: flex;
+	justify-content: center;
+	gap: 1.25rem;
+	list-style: none;
+	padding: 0;
+	margin: 0 0 1.25rem;
+}
+.sociaal svg { width: 24px; height: 24px; fill: currentColor; display: block; }
+
+.klein { font-size: var(--klein); color: var(--inkt-zacht); }
+.klein a { color: inherit; }
+
+.privacy {
+	max-width: 46rem;
+	margin: 1.5rem auto 0;
+	text-align: left;
+}
+.privacy summary {
+	cursor: pointer;
+	text-align: center;
+	text-decoration: underline;
+}
+.privacy[open] summary { margin-bottom: 1rem; }
+.privacy h3 { font-size: 1rem; margin: 1.25rem 0 0.25rem; }
