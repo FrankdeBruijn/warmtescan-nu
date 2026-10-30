@@ -28,3 +28,6 @@ content/images/STOCK-*
 
 # klantmateriaal en grote documenten blijven buiten git
 content/documenten/
+
+# offertes bevatten klantnamen, adressen en prijzen; repo is publiek
+offertes/
