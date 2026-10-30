@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "montserrat",
+        "createdAt": "2026-10-30T06:52:40.399Z",
+        "reason": "Claude: warmtescan-huisstijl, vervanger van het betaalde Gotham uit de Wix-site (zie warmtescan-nu/CLAUDE.md)"
+      }
+    ]
+  }
+}

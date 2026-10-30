@@ -281,8 +281,8 @@ figcaption {
 	margin: 2rem auto 0;
 	padding: 1rem 1.25rem;
 	background: var(--papier);
-	border-left: 4px solid var(--accent-diep);
-	border-radius: 4px;
+	border: 1px solid var(--lijn);
+	border-radius: 10px;
 	text-align: left;
 	font-size: var(--klein);
 }
