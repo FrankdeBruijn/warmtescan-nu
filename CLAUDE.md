@@ -57,6 +57,14 @@ verkleinde webversies staan in `public/assets/img/`.
 Niet in git: `content/documenten/` (het voorbeeldrapport, 8 MB) en de
 `STOCK-*`-bestanden met onduidelijke licentie. Beide staan bewust **niet** op de onepager.
 
+## Offertes (privé)
+
+`offertes/` is een eigen **privérepo**,
+[warmtescan-offertes](https://github.com/FrankdeBruijn/warmtescan-offertes), en wordt door
+deze repo genegeerd, omdat deze repo publiek is. Er staan klantnamen, adressen en prijzen in.
+Na een clone: `gh repo clone FrankdeBruijn/warmtescan-offertes offertes`.
+Pdf's maken in de huisstijl: `python3 offertes/maak-pdf.py`.
+
 ## Nog te doen
 
 - [ ] Voorbeeldrapport terugzetten? Eerst nakijken of er geen klantadres in staat
