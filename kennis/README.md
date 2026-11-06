@@ -17,6 +17,7 @@ Opgezet op 06-11-2026. Dit is de vakkennis waarmee Claude bij Warmtescan.nu werk
 - **Mavic 3 Thermal:** controleer bij elke huur of het toestel een C2-label heeft.
 - **Radiometrische data uitlezen:**
   - **M3T R-JPEG:** `thermal_parser` (Python), of de DJI Thermal SDK (alleen x86).
-  - **M60:** alleen HIKMICRO Analyzer (Windows), dat een CSV-matrix exporteert.
+  - **M60:** HIKMICRO Analyzer draait bij Frank in Parallels (bevestigd 06-11-2026) en exporteert een CSV-matrix met temperaturen.
+  - **M60-instellingen zonder Analyzer:** `python3 tools/m60_info.py <map>` leest per beeld emissiviteit, reflectietemperatuur, afstand, lucht/RV, schaalmodus, span en palet uit het JSON-blok in de jpeg. Het waarschuwt als die binnen een reeks wisselen. De ruwe 640×480-matrix in de jpeg bestaat uit sensorwaarden, niet uit temperaturen; de omrekening staat niet in het bestand (bevestigd: midden ruw 4595 tegen 5,4 °C op het scherm). Temperaturen dus via de CSV-export.
 
 Klantgegevens en offertes staan hier bewust **niet**. Die staan in de privérepo `warmtescan-offertes`.
