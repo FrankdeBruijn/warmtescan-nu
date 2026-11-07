@@ -100,3 +100,13 @@ Pdf's maken in de huisstijl: `python3 offertes/maak-pdf.py`.
 - [ ] Voorbeeldrapport terugzetten? Eerst nakijken of er geen klantadres in staat
 - [ ] Eigen beeld bij de voorwaarden (de WordPress-versie had een foto die alleen in de
       back-up `~/Backups/orangestock-2026-10-28/` op de MacBook staat)
+- [ ] **Site live krijgen (07-11-2026):** Frank geeft de GitHub-app "Cloudflare Workers and Pages"
+      toegang tot `warmtescan-nu` (GitHub → Settings → Applications → Configure). Plan B:
+      `npx wrangler login` (door Frank) en dan `npx wrangler pages deploy dist --project-name warmtescan-nu`.
+      Daarna controleren dat het custom domain warmtescan.nu aan het Pages-project hangt.
+- [ ] **Mailen vanaf frank@warmtescan.nu in Outlook:** voorstel iCloud+ eigen e-maildomein
+      (Frank heeft al iCloud+). Email Routing voor warmtescan.nu uit, Apple-records erin
+      (MX mx01/mx02.mail.icloud.com, TXT apple-domain, SPF `include:icloud.com`, DKIM sig1).
+      Outlook: IMAP imap.mail.me.com:993, SMTP smtp.mail.me.com:587, app-specifiek wachtwoord.
+      Wacht op akkoord van Frank. Let op: een formulier-backend moet dan via frankdebruijn.com sturen.
+- [ ] **Domeinopzegging terugdraaien** bij TransIP (loopt af 08-10-2027), want Frank gaat door.
