@@ -1,9 +1,23 @@
-# Oude Wix- en WordPress-adressen naar de juiste plek op de onepager
-/login-warmtescan          /                 301
-/zakelijk                  /#zakelijk        301
-/drone                     /#drone           301
-/thermografie-uitgelegd    /#uitgelegd       301
-/aanvraag                  /#contact         301
-/contact                   /#contact         301
-/privacy                   /#privacy         301
-/diensten                  /                 301
+# De pagina's staan weer op hun oude Wix-adressen. Hieronder alleen oude/losse adressen
+# die naar de juiste pagina moeten (Wix-varianten, de WordPress-opzet en de onepager).
+/login-warmtescan            /                         301
+/zakelijk                    /zakelijkethermografie    301
+/kopie-van-zakelijk          /zakelijkethermografie    301
+/drone                       /dronethermografie        301
+/kopie-van-drone             /dronethermografie        301
+/aanvraag                    /quickscanaanvraag        301
+/contact                     /quickscanaanvraag        301
+/vrijblijvendeaanvraag       /quickscanaanvraag        301
+/boek-online                 /quickscanaanvraag        301
+/product-page/*              /quickscanaanvraag        301
+/service-page/*              /quickscanaanvraag        301
+/shop                        /quickscanaanvraag        301
+/watkrijgik                  /thermografie-uitgelegd   301
+/waaromeenwarmtescan         /thermografie-uitgelegd   301
+/voorbeeldrapport            /thermografie-uitgelegd   301
+/warmteverlies-inzichtelijk  /                         301
+/kopie-van-home              /                         301
+/about-3                     /                         301
+/privacy                     /                         301
+/diensten                    /                         301
+/blank                       /                         301

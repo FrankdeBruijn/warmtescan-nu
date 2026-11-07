@@ -2,23 +2,45 @@
 
 Website voor thermografische scans — dienst van Frank de Bruijn.
 
-## Stack (herzien 2026-10-30)
+## Stack (herzien 2026-11-07)
 
-**Statische onepager op Cloudflare Pages**, zelfde opzet als `frankdebruijn-com`:
+**Statische site op Cloudflare Pages, exact nagebouwd naar de oude Wix-site** (vijf pagina's op
+dezelfde adressen als op Wix, dus geen SEO-verlies):
 
-- Eén pagina: `public/index.html` plus `public/assets/` (css, fonts, img, icons)
-- Astro doet alleen de build (kopieert `public/` naar `dist/`); er zijn geen Astro-pagina's.
-  Zo blijven de build-instellingen van het Pages-project ongewijzigd.
-- Pages-project `warmtescan-nu` bouwt vanuit GitHub: elke push naar `main` deployt naar
-  https://warmtescan-nu.pages.dev
-- `public/_redirects` stuurt de oude Wix/WordPress-adressen (`/zakelijk`, `/drone`,
-  `/aanvraag`, `/login-warmtescan`, ...) naar het juiste anker op de onepager
-- `public/_headers` zet een strikte CSP: alleen eigen bestanden, geen scripts, geen
-  externe bronnen. Voeg je iets externs toe, pas dan de CSP aan
+| Bestand | Adres |
+|---|---|
+| `public/index.html` | `/` (Particulier) |
+| `public/zakelijkethermografie.html` | `/zakelijkethermografie` |
+| `public/dronethermografie.html` | `/dronethermografie` |
+| `public/quickscanaanvraag.html` | `/quickscanaanvraag` |
+| `public/thermografie-uitgelegd.html` | `/thermografie-uitgelegd` |
+
+- Opmaak in `public/assets/css/wix.css`, gemeten op de Wayback-snapshots van april 2026
+  (`web.archive.org/web/2026*/warmtescan.nu/*`). Kleuren: lichtgrijs `#f7f7f7`, limoen
+  `#ceeb4c`, olijf `#758c10`, grijs vlak `#cccccc`. Wix gebruikte **Gotham** (commercieel,
+  zelf geüpload); hier staat **Montserrat** als vrije vervanger.
+- Beelden in `public/assets/wix/`, verkleind uit de originelen die nog op de Wix-CDN staan
+  (`static.wixstatic.com/media/<id>` zonder `/v1/...` geeft het origineel). De originelen
+  staan lokaal in `content/wix-origineel/` (gitignored).
+- **Niet overgenomen, bewust:** de twee Wix-stockfoto's (huis onder water bij de voorwaarden,
+  stockfoto op de aanvraagpagina; Wix-licentie geldt alleen op Wix) en het iStock-preview-icoon
+  bij "Drone opnames". Daar staan eigen warmtebeelden en een eigen drone-icoon.
+- Header zonder "Login" (Wix-ledenlogin, vervallen). Het zoekveld werkt: springt naar de
+  best passende pagina (`public/assets/js/site.js`).
+- **Aanvraagformulier** ziet eruit als op Wix, maar heeft geen backend: bij verzenden opent het
+  mailprogramma van de bezoeker met een ingevulde mail aan frank@warmtescan.nu. Mogelijke
+  upgrade: Pages Function die via de Cloudflare Email Service-API naar frankdebruijn@me.com
+  stuurt (gratis naar geverifieerde adressen).
+- `public/_redirects`: oude Wix-varianten (`/kopie-van-*`, `/product-page/*`, ...) en de
+  WordPress/onepager-adressen naar de juiste pagina.
+- `public/_headers`: strikte CSP, alleen eigen bestanden; `script-src 'self'` voor site.js.
+  **Geen inline `style=""`** gebruiken, die blokkeert de CSP. Klassen in wix.css.
+- Astro doet alleen de build (kopieert `public/` naar `dist/`). Pages-project `warmtescan-nu`
+  bouwt vanuit GitHub: elke push naar `main` deployt.
 
 ```bash
 npm run build                      # dist/
-python3 -m http.server -d dist     # bekijken op http://localhost:8000
+python3 -m http.server -d dist     # bekijken; lokaal wel met .html achter de subpagina's
 ```
 
 ## Geschiedenis
@@ -30,6 +52,8 @@ python3 -m http.server -d dist     # bekijken op http://localhost:8000
   knopvormen van de onepager vandaan.
 - 27-10-2026 besloten: website weg. 30-10-2026 teruggedraaid: de site komt terug als
   onepager op Cloudflare.
+- 07-11-2026: onepager vervangen door een exacte nabouw van de Wix-site (Frank wilde "hetzelfde
+  als ik had"; veel bezoekers nu het koud wordt). Frank blijft warmtescan doen.
 
 ## Domein, DNS en mail
 
@@ -42,8 +66,8 @@ python3 -m http.server -d dist     # bekijken op http://localhost:8000
 
 ## Contact op de site
 
-Er is **geen formulier** (geen backend): de aanvraagknop is een `mailto:` met een
-ingevuld sjabloon (naam, adres, woonplaats, interesse), plus het telefoonnummer.
+Het formulier op `/quickscanaanvraag` maakt een ingevulde `mailto:` (zie boven), plus het
+telefoonnummer.
 - Telefoon: 06 12415418
 - E-mail: frank@warmtescan.nu
 - Handel, Noord-Brabant · KvK 81239661

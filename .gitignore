@@ -31,3 +31,6 @@ content/documenten/
 
 # offertes bevatten klantnamen, adressen en prijzen; repo is publiek
 offertes/
+
+# originelen van de Wix-CDN (bevat Wix-stockbeelden, licentie alleen op Wix)
+content/wix-origineel/
