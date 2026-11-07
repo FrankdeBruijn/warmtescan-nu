@@ -36,7 +36,13 @@ dezelfde adressen als op Wix, dus geen SEO-verlies):
 - `public/_headers`: strikte CSP, alleen eigen bestanden; `script-src 'self'` voor site.js.
   **Geen inline `style=""`** gebruiken, die blokkeert de CSP. Klassen in wix.css.
 - Astro doet alleen de build (kopieert `public/` naar `dist/`). Pages-project `warmtescan-nu`
-  bouwt vanuit GitHub: elke push naar `main` deployt.
+  hoort vanuit GitHub te bouwen bij elke push naar `main`.
+- **Let op (07-11-2026):** dat gebeurde niet. warmtescan.nu én warmtescan-nu.pages.dev
+  serveerden nog de allereerste Astro-versie (oranje, "Home — Warmtescan.nu", met woonadres in
+  de footer); ook de onepager van 30-10 is dus nooit live geweest. Commits krijgen geen
+  Cloudflare-check op GitHub. Vermoedelijke oorzaak (zelfde als bij frankdebruijn-com in okt):
+  de GitHub-app "Cloudflare Workers and Pages" heeft geen toegang tot deze repo. Controleren na
+  een push: `curl -s https://warmtescan-nu.pages.dev/ | grep -o '<title>[^<]*'`.
 
 ```bash
 npm run build                      # dist/
