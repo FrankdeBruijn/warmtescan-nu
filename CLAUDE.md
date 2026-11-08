@@ -25,6 +25,12 @@ dezelfde adressen als op Wix, dus geen SEO-verlies):
 - **Niet overgenomen, bewust:** de twee Wix-stockfoto's (huis onder water bij de voorwaarden,
   stockfoto op de aanvraagpagina; Wix-licentie geldt alleen op Wix) en het iStock-preview-icoon
   bij "Drone opnames". Daar staan eigen warmtebeelden en een eigen drone-icoon.
+- **Apparatuur (bijgewerkt 08-11-2026):** HIKMICRO M60 (eigen camera) en DJI Mavic 3 Thermal
+  (gehuurd bij DroneLand). Beelden `assets/wix/m60.png` (officiële HIKMICRO-render, via een
+  dealer-webshop; hikmicrotech.com blokkeert downloads) en `assets/wix/mavic3.png` (DJI-render van
+  de Mavic 3 Enterprise-serie, enterprise.dji.com). Vervangen: FLIR E53 en Mavic 2 Enterprise Advanced.
+- Mailhandtekening: `content/mail/handtekening.html` (in Safari openen, kopiëren, plakken in
+  Mail → Instellingen → Handtekeningen, "Warmtescan 2026"). Het logo laadt van warmtescan.nu.
 - Header zonder "Login" (Wix-ledenlogin, vervallen). Het zoekveld werkt: springt naar de
   best passende pagina (`public/assets/js/site.js`).
 - **Aanvraagformulier** ziet eruit als op Wix, maar heeft geen backend: bij verzenden opent het
