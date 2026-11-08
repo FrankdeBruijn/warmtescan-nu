@@ -90,7 +90,7 @@ Het formulier op `/quickscanaanvraag` maakt een ingevulde `mailto:` (zie boven),
 telefoonnummer.
 - Telefoon: 06 12415418
 - E-mail: frank@warmtescan.nu
-- Handel, Noord-Brabant · KvK 81239661
+- Oss, Noord-Brabant · KvK 81239661
 
 ## Content en beeld
 
