@@ -67,8 +67,16 @@ python3 -m http.server -d dist     # bekijken; lokaal wel met .html achter de su
   **loopt af op 08-10-2027**. Wil Frank de site houden, dan vóór half september 2027
   beslissen over verlengen of verhuizen — zie `PROJECTEN/netwerk-systeembeheer/05-transip-afbouwen.md`.
 - DNS-zone bij Cloudflare (nameservers april/rajeev).
-- Mail: Cloudflare Email Routing, catch-all naar frankdebruijn@me.com. `frank@warmtescan.nu`
-  op de site komt dus daar binnen. Versturen vanaf @warmtescan.nu kan niet.
+- Mail (sinds 08-11-2026): **iCloud+ eigen e-maildomein**, op het Apple-account
+  frankdebruijn@me.com. Records gezet via Domain Connect vanuit iCloud: MX mx01/mx02.mail.icloud.com,
+  TXT `apple-domain=…`, SPF `v=spf1 include:_spf.mx.cloudflare.net include:icloud.com ~all`, CNAME
+  `sig1._domainkey` (DKIM). De MX-records van Cloudflare Email Routing zijn daarbij vervangen.
+  - Eén postvak: mail aan @warmtescan.nu en @me.com komt in dezelfde iCloud-inbox. Scheiden kan
+    met een regel in iCloud Mail (aan frank@warmtescan.nu → map Warmtescan).
+  - Outlook: IMAP imap.mail.me.com:993 SSL, SMTP smtp.mail.me.com:587 STARTTLS, gebruikersnaam
+    frankdebruijn@me.com, app-specifiek wachtwoord. Dat account verstuurt als frank@warmtescan.nu.
+  - Opruimen: Email Routing in Cloudflare uitzetten, en daarna `include:_spf.mx.cloudflare.net`
+    uit de SPF halen.
 
 ## Contact op de site
 
@@ -107,9 +115,7 @@ Pdf's maken in de huisstijl: `python3 offertes/maak-pdf.py`.
       toegang tot `warmtescan-nu` (GitHub → Settings → Applications → Configure). Plan B:
       `npx wrangler login` (door Frank) en dan `npx wrangler pages deploy dist --project-name warmtescan-nu`.
       Daarna controleren dat het custom domain warmtescan.nu aan het Pages-project hangt.
-- [ ] **Mailen vanaf frank@warmtescan.nu in Outlook:** voorstel iCloud+ eigen e-maildomein
-      (Frank heeft al iCloud+). Email Routing voor warmtescan.nu uit, Apple-records erin
-      (MX mx01/mx02.mail.icloud.com, TXT apple-domain, SPF `include:icloud.com`, DKIM sig1).
-      Outlook: IMAP imap.mail.me.com:993, SMTP smtp.mail.me.com:587, app-specifiek wachtwoord.
-      Wacht op akkoord van Frank. Let op: een formulier-backend moet dan via frankdebruijn.com sturen.
+- [x] **Mailen vanaf frank@warmtescan.nu (08-11-2026):** via iCloud+, zie *Domein, DNS en mail*.
+      Een formulier-backend moet voortaan via frankdebruijn.com sturen; Email Routing is hier weg.
+- [ ] Email Routing in Cloudflare uitzetten en SPF opschonen (zie boven).
 - [ ] **Domeinopzegging terugdraaien** bij TransIP (loopt af 08-10-2027), want Frank gaat door.
