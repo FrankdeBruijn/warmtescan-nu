@@ -39,6 +39,7 @@
 	// Aanvraagformulier: zet de gegevens in een e-mail aan frank@warmtescan.nu
 	var form = document.querySelector('.formulier');
 	if (form) {
+		var start = Date.now();
 		form.addEventListener('submit', function (e) {
 			e.preventDefault();
 			if (!form.reportValidity()) return;
@@ -58,11 +59,37 @@
 				'Opmerkingen:',
 				v('opmerkingen') || '-'
 			];
-			var onderwerp = 'Aanvraag warmtescan - ' + v('woonplaats');
-			window.location.href = 'mailto:frank@warmtescan.nu?subject=' + encodeURIComponent(onderwerp) +
-				'&body=' + encodeURIComponent(regels.join('\n'));
 			var m = form.querySelector('.melding');
-			if (m) m.textContent = 'Je mailprogramma opent met je aanvraag erin. Verstuur die mail, dan krijg je zo snel mogelijk een prijsopgave. Lukt het niet? Bel of app 06 12415418.';
+			var knop = form.querySelector('button[type=submit]');
+			var viaMail = function () {
+				var onderwerp = 'Aanvraag warmtescan - ' + v('woonplaats');
+				window.location.href = 'mailto:frank@warmtescan.nu?subject=' + encodeURIComponent(onderwerp) +
+					'&body=' + encodeURIComponent(regels.join('\n'));
+				if (m) m.textContent = 'Uw mailprogramma opent met de aanvraag erin. Verstuur die mail, dan hoort u binnen 2 werkdagen van mij. Lukt het niet? Bel of app 06 12415418.';
+			};
+			var gegevens = {
+				voornaam: v('voornaam'), achternaam: v('achternaam'), adres: v('adres'), woonplaats: v('woonplaats'),
+				telefoon: v('telefoon'), email: v('email'), interesse: interesse === '-' ? '' : interesse,
+				opmerkingen: v('opmerkingen'), website: v('website'), ms: Date.now() - start
+			};
+			if (knop) knop.disabled = true;
+			if (m) m.textContent = 'Bezig met versturen…';
+			fetch('/api/aanvraag', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(gegevens)
+			}).then(function (r) {
+				return r.json().then(function (j) { return { ok: r.ok && j.ok, status: r.status, fout: j.fout }; });
+			}).then(function (res) {
+				if (res.ok) {
+					form.reset();
+					if (m) m.textContent = 'Bedankt! Uw aanvraag is binnen. U hoort binnen 2 werkdagen van mij.';
+				} else if (res.status === 400 && res.fout) {
+					if (m) m.textContent = res.fout;
+				} else {
+					viaMail();
+				}
+			}).catch(viaMail).then(function () { if (knop) knop.disabled = false; });
 		});
 	}
 })();
