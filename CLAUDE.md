@@ -33,10 +33,19 @@ dezelfde adressen als op Wix, dus geen SEO-verlies):
   Mail → Instellingen → Handtekeningen, "Warmtescan 2026"). Het logo laadt van warmtescan.nu.
 - Header zonder "Login" (Wix-ledenlogin, vervallen). Het zoekveld werkt: springt naar de
   best passende pagina (`public/assets/js/site.js`).
-- **Aanvraagformulier** ziet eruit als op Wix, maar heeft geen backend: bij verzenden opent het
-  mailprogramma van de bezoeker met een ingevulde mail aan frank@warmtescan.nu. Mogelijke
-  upgrade: Pages Function die via de Cloudflare Email Service-API naar frankdebruijn@me.com
-  stuurt (gratis naar geverifieerde adressen).
+- **Aanvraagformulier (sinds 08-11-2026 met backend):** `functions/api/aanvraag.js` (Pages
+  Function) mailt de aanvraag via de Email Service-REST-API naar frankdebruijn@me.com, vanaf
+  formulier@frankdebruijn.com (dat domein heeft Email Routing; naar een geverifieerd adres is
+  gratis). Reply-to is de aanvrager. De bezoeker ziet op de site "U hoort binnen 2 werkdagen van
+  mij". Spamfilter: honeypot-veld `website` en minimaal 3 s invultijd.
+  - Instellingen in het Pages-project: `CF_ACCOUNT_ID`, secret `CF_EMAIL_TOKEN` (Email Sending:
+    Edit). Ontbreken die of faalt de API, dan valt `site.js` terug op mailto: er gaat niets verloren.
+  - `BEVESTIGING=aan` stuurt de klant ook een bevestigingsmail. Dat vereist **Workers Paid** ($5/mnd)
+    én warmtescan.nu onboarded bij Email Sending (records op `cf-bounce.`, naast de iCloud-MX).
+    Zet dan eerst ook Turnstile op het formulier: anders kan iemand via het formulier
+    bevestigingsmails naar willekeurige adressen laten sturen.
+  - Testen: `curl -X POST -H 'Content-Type: application/json' -d '{}' https://warmtescan-nu.pages.dev/api/aanvraag`
+    geeft een JSON-fout terug; een HTML-antwoord betekent dat de functie niet is meegebouwd.
 - `public/_redirects`: oude Wix-varianten (`/kopie-van-*`, `/product-page/*`, ...) en de
   WordPress/onepager-adressen naar de juiste pagina.
 - `public/_headers`: strikte CSP, alleen eigen bestanden; `script-src 'self'` voor site.js.
