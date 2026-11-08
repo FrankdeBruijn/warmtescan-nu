@@ -100,7 +100,10 @@ Pdf's maken in de huisstijl: `python3 offertes/maak-pdf.py`.
 - [ ] Voorbeeldrapport terugzetten? Eerst nakijken of er geen klantadres in staat
 - [ ] Eigen beeld bij de voorwaarden (de WordPress-versie had een foto die alleen in de
       back-up `~/Backups/orangestock-2026-10-28/` op de MacBook staat)
-- [ ] **Site live krijgen (07-11-2026):** Frank geeft de GitHub-app "Cloudflare Workers and Pages"
+- [x] **Site live (08-11-2026):** Frank gaf de GitHub-app toegang, de lege commit 9756bc4 startte de
+      build, Cloudflare-check geslaagd. warmtescan.nu en www tonen de vijf Wix-pagina's, het oude
+      woonadres staat er niet meer op. Oorspronkelijke notitie:
+- [ ] ~~Site live krijgen (07-11-2026):~~ Frank geeft de GitHub-app "Cloudflare Workers and Pages"
       toegang tot `warmtescan-nu` (GitHub → Settings → Applications → Configure). Plan B:
       `npx wrangler login` (door Frank) en dan `npx wrangler pages deploy dist --project-name warmtescan-nu`.
       Daarna controleren dat het custom domain warmtescan.nu aan het Pages-project hangt.
